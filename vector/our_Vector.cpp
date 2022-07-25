@@ -2,7 +2,7 @@
  	The given task is to implement a class in C++
      which behaves just like the "Vector class".
 
-https://www.geeksforgeeks.org/how-to-implement-our-own-vector-class-in-c/
+	https://www.geeksforgeeks.org/how-to-implement-our-own-vector-class-in-c/
 */
 
 /*

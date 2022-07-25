@@ -1,11 +1,39 @@
 #include <iostream>
+#include <vector>
+#include <memory>
 
-template <typename T, typename Alloc = std::allocator<T> >
-class my_vector {
+/* Vector:
+ 
+   * Vectors are sequence containers representing arrays that can change in size.
+   		==> use of std::allocator::allocate() to allocate for vector
+			https://cplusplus.com/reference/memory/allocator/allocate/
+   * 
+*/
 
+template < typename T, typename Alloc = std::allocator<T> >
+class vector {
 	public:
-		//Constructor
-		my_vector(size_type n, const value_type& val = value_type());
+		vector(int i) {
+			typedef Alloc::<T> 
+		}
+		vector(const vector& inst) {
+			*this = inst;
+		}
+		~vector() {}
+		vector& operator=(const vector& inst) {
+			this = allocator(inst.size());
+			int i;
+			for (i = 0; i < inst.size(); i++)
+			{
+				this[i] = inst[i];
+			}
+		}
+
 
 };
+
+int main() {
+
+	return 0;
+}
 

@@ -43,26 +43,27 @@ P.S: "Such aliases inside of classes are often called Member Types"
 //1- Implement Vector : https://cplusplus.com/reference/vector/vector/?kw=vector
 
 // check "test_alloc.cpp" file for more info about "std::allocator"
-template <class T, class Alloc = std::allocator<T> > // #include memory
+template <class T, class A = std::allocator<T> > // #include memory
 class vector {
-	typedef value_type T;
-	typedef allocator_type = Alloc;
+	typedef T value_type ;
+	typedef A allocator_type;
 
 	
-	typedef reference = allocator_type::reference;
-	typedef const_reference = allocator_type::const_reference;
+	typedef typename allocator_type::reference reference;
+	typedef typename allocator_type::const_reference const_reference;
 
-	typedef pointer = allocator_type::pointer;
-	typedef const_pointer = allocator_type::const_pointer;
+	typedef typename allocator_type::pointer pointer;
+	typedef typename allocator_type::const_pointer const_pointer;
 
 	//typedef iterator;
-	typedef const_iterator;
-	typedef reverse_iterator;
-	typedef const_reverse_iterator;
+	typedef MyIterator<std::random_access_iterator_tag, value_type> h;
+	// typedef const_iterator;
+	// typedef reverse_iterator;
+	// typedef const_reverse_iterator;
 
-	typedef difference_type = iterator_traits<iterator>::difference_type;
-	typedef size_type;
-}
+	// typedef difference_type = iterator_traits<iterator>::difference_type;
+	// typedef size_type;
+};
 
 //		-----------------------------------------------
 //2- Implementing Iterator: 
@@ -72,17 +73,20 @@ template < class Category, class T, class Distance = ptrdiff_t, class Pointer = 
 class MyIterator // inheritance machi blan cuz member_type don't get inherited
 {
 	// Member type
-	typedef value_type T;
+	typedef  T value_type;
 	typedef difference_type Distance;
 	typedef pointer Pointer;
 	typedef reference Reference;
 	typedef iterator_category Category;	
 
 	// pointer
-	int *p;
+	value_type *p;
 
 	public:
 	//https://cplusplus.com/reference/iterator/RandomAccessIterator/
+			MyIterator(){ // default constructor
+			p = NULL;
+		}
 		MyIterator(value_type *x)	: p(x) { // default constructor
 		}
 		
@@ -107,3 +111,9 @@ class MyIterator // inheritance machi blan cuz member_type don't get inherited
 			return p != rinst.p;
 		}
 };
+
+
+int main()
+{
+	vector<int> v;
+}

@@ -46,6 +46,7 @@ class MutantStack : public ft::stack<T> {
 
 
 int main(int argc, char** argv) {
+	std::vector<int> v;
 	if (argc != 2)
 	{
 		std::cerr << "Usage: ./test seed" << std::endl;

@@ -6,11 +6,19 @@
 namespace ft
 {
 	
-template < class T, class Alloc = std::allocator<T> >
+template < class T, class A = std::allocator<T> >
 class vector {
 	//1- Define the "Member Types": typedef old_name(definition) new_name(member_type)
 	typedef T value_type;
-	typedef Alloc allocator_type;
+	typedef A allocator_type;
+	typedef typename A::size_type size_type;
+	typedef typename A::difference_type difference_type;
+
+	typedef typename A::pointer pointer;
+	typedef typename A::const_pointer const_pointer;
+	typedef typename A::reference reference;
+	typedef typename A::const_reference const_reference;
+	
 	private:
 		allocator_type alloc; //Create a variable alloc type of allocator_type
 		size_t capacity; 

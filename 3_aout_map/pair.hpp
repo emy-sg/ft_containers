@@ -4,6 +4,10 @@
 // How to implement a non-member template function:
 // https://stackoverflow.com/questions/50082807/how-do-in-include-a-non-member-operator-overloading-for-a-template-class-in-c
 
+// Error: declaration of 'T' shadows template parameter
+//  https://stackoverflow.com/questions/20875033/clang-vs-vcerror-declaration-of-t-shadows-template-parameter
+
+namespace emy {
 
 template < class T1, class T2 >
 class pair {
@@ -11,14 +15,14 @@ class pair {
         typedef T1 first_type;
         typedef T2 second_type;
 
-    private:
+    public:
         // Member variables
         first_type first;
         second_type second;
 
     public:
         // Constructor
-        pair() {}
+        pair() : first(), second() {}
 
         // Copy
         template <class U, class V>
@@ -38,24 +42,33 @@ class pair {
         }
 
         // Non-member function overloads
-        template <class T1, class T2>
+
+
+        friend pair<T1, T2> make_pair (T1 x, T2 y);
+
+
         friend bool operator== (const pair<T1,T2>& lhs, const pair<T1,T2>& rhs);
 
-        template <class T1, class T2>
+
         friend bool operator!= (const pair<T1,T2>& lhs, const pair<T1,T2>& rhs);
         
-        template <class T1, class T2>
+
         friend bool operator<  (const pair<T1,T2>& lhs, const pair<T1,T2>& rhs);
 
-        template <class T1, class T2>
+
         friend bool operator<= (const pair<T1,T2>& lhs, const pair<T1,T2>& rhs);
 
-        template <class T1, class T2>
         friend bool operator>  (const pair<T1,T2>& lhs, const pair<T1,T2>& rhs);
 
-        template <class T1, class T2>
+
         friend bool operator>= (const pair<T1,T2>& lhs, const pair<T1,T2>& rhs);
 };
+
+template <class T1, class T2>
+  pair<T1,T2> make_pair (T1 x, T2 y)
+{
+    return ( pair<T1,T2>(x,y) );
+}
 
 template <class T1, class T2>
   bool operator== (const pair<T1,T2>& lhs, const pair<T1,T2>& rhs)
@@ -81,5 +94,5 @@ template <class T1, class T2>
   bool operator>= (const pair<T1,T2>& lhs, const pair<T1,T2>& rhs)
 { return !(lhs<rhs); }
 
-
+}
 #endif

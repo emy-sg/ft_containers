@@ -44,7 +44,7 @@ class pair {
         // Non-member function overloads
 
 
-        friend pair<T1, T2> make_pair (T1 x, T2 y);
+        pair<T1, T2> make_pair (T1 x, T2 y);
 
 
         friend bool operator== (const pair<T1,T2>& lhs, const pair<T1,T2>& rhs);

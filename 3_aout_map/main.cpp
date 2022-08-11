@@ -1,14 +1,6 @@
 #include "map.hpp"
 #include <map>
 
-class obj {
-    public:
-        int i;
-        obj()  { std::cout << "Obj constructor\n";}
-        obj(int x) : i(x) {}
-};
-
-
 /*int main () {
   emy::pair <std::string,double> product1;                     // default constructor
   emy::pair <std::string,double> product2 ("tomatoes",2.30);   // value init
@@ -25,7 +17,9 @@ class obj {
   return 0;
 }*/
 
-int main () {
+// ==> Test std::pair
+
+/*int main () {
   std::pair <int,int> foo;
   std::pair <int,int> bar;
 
@@ -36,4 +30,21 @@ int main () {
   std::cout << "bar: " << bar.first << ", " << bar.second << '\n';
 
   return 0;
+}*/
+
+//  ==> Test constructor map
+
+int main ()
+{
+  std::map<char, int> first;
+
+  first['a'] = 10;
+  first['b'] = 30;
+  first['c'] = 50;
+  first['d'] = 70;
+
+  //emy::map<char, int> second(first);
+
+  return 0;
 }
+

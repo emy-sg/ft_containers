@@ -4,6 +4,7 @@
 #include <iostream>
 #include <memory.h>
 #include "pair.hpp"
+#include "Tree.hpp"
 
 namespace emy {
 
@@ -26,11 +27,52 @@ class map {
         // Constructor
         explicit map() { std::cout << "Map empty constructor\n"; }
 
-        template < class InputIterator >
-        map (InputIterator first, InputIterator last) { }
+        /*template < class InputIterator >
+        map (InputIterator first, InputIterator last) { }*/
+        
 
     private:
-        size_t size;
+        Tree<key_type, mapped_type, key_compare, allocator_type>* rbt;
 };
 }
 #endif
+
+/*
+    Map:
+        (constructor)
+        (destructor)
+        (operator=)
+        get_allocator : darouri
+
+    Element access
+        at : darouri
+        [] : darouri
+
+    Iterators
+        begin
+        end
+        rbegin
+        rend
+
+    Capacity
+        empty
+        size
+        max_size
+
+    Modifiers
+        clear
+        insert
+        erase
+        swap
+
+    Lookup
+        count
+        find
+        equal_range
+        lower_range
+        upper_range
+
+    Observers
+        key_comp
+        value_comp
+*/
